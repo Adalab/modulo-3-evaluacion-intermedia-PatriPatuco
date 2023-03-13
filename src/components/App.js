@@ -5,16 +5,28 @@ import "../styles/App.scss";
 function App() {
   const [data, setData] = useState(api);
   const [quotes, setQuotes] = useState("");
-  const [character, setCharacter] = useState ("Todos");
+  const [characters, setCharacters] = useState ("Todos");
 
   /* --PRINT LIST-- */
   const renderQuotes = () => {
 
-    /* Filter to show the quotes matching the user quote search */
+    /* Filter the quotes matching the user quote search */
     return data
-    .filter ((eachQuote) => {
-      return eachQuote.quote.toLowerCase().includes(quotes.toLowerCase());
+    .filter ((eachSearch) => {
+      return (
+        eachSearch.quote.toLowerCase().includes(quotes.toLowerCase())
+      );
     })
+
+    /* Filter the quotes marching the user characters search */
+    .filter ((eachCharacter) => {
+        if (characters === "Todos") {
+          return data
+        } else if (eachCharacter.character === characters) {
+          return eachCharacter
+        }
+    })
+    
     .map((eachQuote, index) => (
       <li className="quote-item" key={index}>
         <p className="quote-p">
@@ -28,6 +40,10 @@ function App() {
   const handleQuote = (ev) => {
     setQuotes(ev.target.value);
   };
+
+  const handleCharacters = (ev) => {
+    setCharacters(ev.target.value);
+  }
 
   /* HTML */
   return (
@@ -46,7 +62,10 @@ function App() {
           <label htmlFor="search-char" className="search">
             Filtrar por personaje
           </label>
-          <select className="search-char in-search">
+          <select 
+          className="search-char in-search"
+          value={characters}
+          onChange={handleCharacters}>
             <option value="Todos">Todos</option>
             <option value="Ross">Ross</option>
             <option value="Monica">Monica</option>
