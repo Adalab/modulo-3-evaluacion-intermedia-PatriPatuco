@@ -1,1 +1,39 @@
-/* Aquí van tus estilos */
+.header {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-title {
+    color: black;
+    padding-bottom: 20px;
+}
+
+.in-search {
+    margin-left: 1px;
+}
+
+.search{
+    font-size: 16px;
+    padding: 10px;
+}
+
+.quotes-list {
+    border-top: 1px grey solid;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    list-style: none;
+}
+
+.quote-item {
+    font-size: 20px;
+    border: 1px rgb(207, 207, 207) solid;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 6px;
+}
+
+.char-name {
+    color: rgb(53, 192, 76);
+}
